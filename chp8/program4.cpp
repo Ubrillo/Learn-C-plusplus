@@ -1,0 +1,30 @@
+//
+// Created by ubril on 6/2/2026.
+//
+
+
+#include <cstdio>
+struct TextFile {
+    public:
+    bool success;
+    const char* data;
+    size_t n_bytes;
+};
+
+TextFile read_text_file(const char* path) {
+    const static char contents[]{ "Sometimes the goat is you." };
+    return TextFile{
+        true,
+        contents,
+        sizeof(contents)
+    };
+}
+
+int main() {
+    const auto [success, contents, length] = read_text_file("REAMDE.txt");
+    if (success) {
+        printf("Read %zd bytes: %s\n", length, contents);
+    }else {
+        printf("failed to open readme.txt");
+    }
+}
